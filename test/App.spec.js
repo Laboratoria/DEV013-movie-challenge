@@ -1,4 +1,4 @@
-import App from './App.js';
+import App from '../src/components/App.js';
 
 describe('App', () => {
   it('should render without crashing', () => {

@@ -5,8 +5,8 @@
   "main": "src/index.html",
   "license": "MIT",
   "scripts": {
-    "pretest": "eslint .",
-    "test": "jest --coverage",
+    "eslint": "eslint --ext .js src/ test/",
+    "test": "jest --verbose --coverage test/",
     "start": "serve src/"
   },
   "devDependencies": {
