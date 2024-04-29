@@ -1,18 +1,17 @@
+import detalles from "../components/tarjeta.js"
 import renderDetailPelicula from "../components/renderpelicula.js";
 
 
 const pelicula = () => {
     const tarjeta = document.createElement('div');
-    const 
     const locationHash = window.location.hash;
     console.log(locationHash)
-    const sinHash = locationHash.indexOf ("=")
-    const idLocationDetalle = locationHash.slice(sinHash+1, locationHash.length-1)
-    console.log(locationHash)
+    const sinHash = locationHash.indexOf("=")
+    const idLocationDetalle = locationHash.slice(sinHash + 1, locationHash.length)
+    console.log(idLocationDetalle)
 
     tarjeta.appendChild(renderDetailPelicula(idLocationDetalle))
-    
-   
+    tarjeta.appendChild(detalles())
     return tarjeta;
 };
 

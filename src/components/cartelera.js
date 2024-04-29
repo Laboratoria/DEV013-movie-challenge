@@ -1,4 +1,5 @@
 import requestApi from '../api.js';
+import renderDetailPelicula from './renderpelicula.js';
 
 
 function renderCartelera() {
@@ -11,19 +12,20 @@ function renderCartelera() {
       response.forEach(pelicula => {
         const peliculaElement = document.createElement('div');
         peliculaElement.classList.add('pelicula');
+        
 
         const tituloElement = document.createElement('h1');
         tituloElement.textContent = pelicula.title;
-        
-        const enlacePoster = document.createElement('a');
-        enlacePoster.setAttribute('href', '#tarjeta?id=' + pelicula.title);
 
-        enlacePoster.addEventListener('click', (event) => { 
+        const enlacePoster = document.createElement('a');
+        enlacePoster.setAttribute('href', `#tarjeta?id=${pelicula.id}`)
+
+        /*enlacePoster.addEventListener('click', (event) => { 
           event.preventDefault();
           window.location.href = '#tarjeta?id=' + pelicula.title;
-        });
+        });*/
 
-       
+
 
         const imagenElement = document.createElement('img');
         imagenElement.classList.add('poster');
@@ -35,19 +37,34 @@ function renderCartelera() {
         peliculaElement.appendChild(tituloElement);
         peliculasContainer.appendChild(peliculaElement);
         
-        
-
       });
-    })
-   
-    
+      
+      
+      const arrayPeliculas = peliculasContainer.querySelectorAll(".pelicula")
+      arrayPeliculas.forEach(itemPelicula => {
+        itemPelicula.addEventListener('click', () => {
+          const peliculaId = itemPelicula.querySelector('a').getAttribute('href').split('=')[1];
+          renderDetailPelicula(peliculaId); 
+          
+          /*window.location.hash = peliculaId;*/
+
+          console.log(peliculaId)
+
+        });
+        
+      });
+
+
+    });
+
+
   return peliculasContainer;
 }
 
 export default renderCartelera;
 
 
-// Buscar dentro de peliculaContainer el elemento que contiene cada pelicula 
+// Buscar dentro de peliculaContainer el elemento que contiene cada pelicula
 // una vez que obtengamos la pelicula, tenemos que recorrer el arreglo dando un evento a cada pelicula.
 // con el evento redirigir al detalle de pelicula "tarjeta"
 // crear estructura como pide el readem "img...

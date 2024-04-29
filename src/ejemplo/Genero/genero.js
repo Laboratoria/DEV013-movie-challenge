@@ -1,15 +1,15 @@
-const header = () => {
-    const $header = document.createElement("header");
-    $header.innerHTML = `
+const inicio = () => {
+    const home = document.createElement("div");
+    home.innerHTML = `
        
-     <a href= "/#genero" class= posterior> genero </a>
+     <a href= "/#home" class= posterior> Home </a>
       `;
 
 
 
-    return $header;
+    return home;
 
 
 
 }
-export default header;
+export default inicio;

@@ -1,7 +1,58 @@
+import home from './ejemplo/Genero/home.js';
 import App from './view/App.js';
 import Pelicula from './view/Peliculas.js'
 
 const contenedorHTML = document.querySelector("#root");
+const init = () => {
+    
+    window.addEventListener("hashchange", ()=> {
+    contenedorHTML.innerHTML= "";
+     switch(window.location.hash){
+        case " ":
+            contenedorHTML.appendChild(App());
+        break;
+        case "#tarjeta":// "#tarjeta?id=idLocationDetalle"
+         contenedorHTML.appendChild(Pelicula());
+        break;
+        default:
+            contenedorHTML.appendChild(Pelicula()); 
+    
+        }
+
+    });
+};
+
+
+window.addEventListener("load", () => {
+    contenedorHTML.appendChild(App());
+    init();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const contenedorHTML = document.querySelector("#root");
 const init = () => {
     
     window.addEventListener("hashchange", ()=> {
@@ -29,7 +80,7 @@ const init = () => {
 window.addEventListener("load", () => {
     contenedorHTML.appendChild(App());
     init();
-});
+});*/
 
 
 /*document.getElementById('root').appendChild(App());*/
